@@ -31,7 +31,7 @@ class Ball:
         self.yv -= GRAVITY * game_framework.frame_time  # m/s
 
     def get_bb(self):
-        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
+        return self.x-10, self.y-10, self.x+10, self.y+10
 
     def handle_collision(self, group, other):
         if group == 'boy:ball':

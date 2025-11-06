@@ -23,30 +23,29 @@ def handle_events():
 
 def init():
     global boy
-
     zombies = [Zombie() for i in range(4)]
-    game_world.add_objects(zombies, 1)
-
+    game_world.add_objects(zombies,1)
     grass = Grass()
     game_world.add_object(grass, 0)
-    game_world.add_collision_pair('grass:ball', None, grass)
+    game_world.add_collision_pair('grass:ball',grass,None)
 
     boy = Boy()
     game_world.add_object(boy, 1)
 
     global balls
-    balls = [Ball(random.randint(100,1600),60,0)for _ in range(20)]
+    balls = [Ball(random.randint(300,1600),60, 0)for _ in range(30)]
     game_world.add_objects(balls,1)
 
-    game_world.add_collision_pair('boy:ball', boy, None)
+    #충돌검사가 필요하 페어 등록
+    game_world.add_collision_pair('boy:ball',boy,None)
     for ball in balls:
-        game_world.add_collision_pair('bay:ball', None, ball)
+        game_world.add_collision_pair('boy:ball',None,ball)
 
 
 def update():
     game_world.update()
+    game_world.handle_collisions()
 
-    game_world.handle_collision()
 
 def draw():
     clear_canvas()

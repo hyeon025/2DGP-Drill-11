@@ -13,8 +13,9 @@ class Grass:
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):
-        return 0, 0, 1600, 50
+        return 0,0,1600-1,50
 
     def handle_collision(self, group, other):
         if group == 'grass:ball':
             pass
+
