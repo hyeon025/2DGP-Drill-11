@@ -61,4 +61,6 @@ class Zombie:
         pass
 
     def handle_collision(self, group, other):
-        pass
+        if group == 'zombie:ball':
+            if other.stopped == False:
+                pass
